@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Survey Form</title>
+		<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	</head>
+  <body>
+    <div id="box">
+      Thanks for submitting this form! you have submitted this form # {{request.session.number}}
+    </div>
+    <div id="wrapper">
+      <fieldset>
+        Name: {{request.session.name}}
+      </fieldset>
+      <fieldset>
+        Dojo Location: {{request.session.location}}
+      </fieldset>
+      <fieldset>
+        Favorite Language: {{request.session.language}}!!!
+      </fieldset>
+      <fieldset>
+        Comment: {{request.session.comment}}
+        <form action="/back" method="post">
+          {% csrf_token %}
+        <input type="submit" value="Go Back">
+      </fieldset>
+      </form>
+    </div>
+  </body>
+</html>
